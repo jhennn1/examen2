@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestionar Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="datos">
+        <h2>SEGUNDO PARCIAL TEM-742</h2>
+        
+        <label for="nombre"> NOMBRE: JHENNY NINA CRUZ</label>
+        <br>
+        <label for="nombre">CI.: 9870617</label>
+        <br>
+       
+
+
+     </div>
+    </div>
+    <h1>Gestionar Productos</h1>
+
+    <a href="/nuevo" style="left: 50%; background-color: #3537c0;">Nuevo</a>
+
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha</th>
+            <th>Categoria</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for producto in productos %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.cantidad }}</td>
+              <td>{{ producto.precio}}</td>
+              <td>{{ producto.fecha}}</td>
+              <td>{{ producto.categoria}}</td>
+              
+              <td>
+                <a href="/editar/{{ loop.index - 1 }}" style="background-color: #346136;">Editar</a>
+                <a href="/eliminar/{{ loop.index - 1 }}" style="background-color: #96503f;">Eliminar</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
